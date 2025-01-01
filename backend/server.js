@@ -1,8 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDB from "./src/config/db.js";
-import adminRoutes from "./src/routes/admin.route.js";
 import cookieParser from "cookie-parser";
+
+import connectDB from "./src/config/db.js";
+
+import adminRoutes from "./src/routes/admin.route.js";
+import userRoutes from "./src/routes/user.route.js";
+
 
 const app = express();
 dotenv.config();
@@ -16,6 +20,7 @@ app.use(cookieParser())
 
 
 app.use("/api/admin", adminRoutes);
+app.use("/api/user", userRoutes);
 
 
 app.listen(Port, () => {

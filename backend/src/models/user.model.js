@@ -22,8 +22,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true, // Needed for communication
     },
-    address: {
-      type: String, // Optional for buyers
+    property: {
+      type: String, 
+      required: function () {
+        return this.role === "buyer"; // Property is required only for buyers
+      },
     },
     role: { 
       type: String, 

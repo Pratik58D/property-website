@@ -23,6 +23,7 @@ export const contactUs = async (req, res) => {
   }
 };
 
+//getting all users except admin
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find({role : {$ne :"admin"}}).select("-password");

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const propertySchema = new mongoose.Schema({
   title: {
@@ -12,13 +12,12 @@ const propertySchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  location: {
-    type: String,
+  size: {
+    type: String, //in square meters
     required: true,
   },
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Owner",
+  location: {
+    type: String,
     required: true,
   },
   images: [String],
@@ -28,4 +27,5 @@ const propertySchema = new mongoose.Schema({
     default: "available" },
 });
 
-module.exports = mongoose.model("Property", propertySchema);
+const Property = mongoose.model("Property", propertySchema);
+export default Property;

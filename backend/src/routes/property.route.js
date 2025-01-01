@@ -1,11 +1,12 @@
-const express = require("express");
-const { getAllProperties, createProperty, updateProperty, deleteProperty } = require("../controllers/propertyController");
-const { protectAdmin } = require("../middleware/authMiddleware");
+import express from "express";
+import { getAllProperties, createProperty, updateProperty, deleteProperty }  from "../controllers/property.controller.js";
+import {protectRoute, adminOnly } from "../middleware/auth.middleware.js";
+
 const router = express.Router();
 
 router.get("/", getAllProperties);
-router.post("/", protectAdmin, createProperty);
-router.put("/:id", protectAdmin, updateProperty);
-router.delete("/:id", protectAdmin, deleteProperty);
+router.post("/", protectRoute,adminOnly, createProperty);
+router.put("/:id", protectRoute, updateProperty);
+router.delete("/:id", protectRoute, deleteProperty);
 
-module.exports = router;
+export default router;

@@ -5,7 +5,7 @@ import {protectRoute, adminOnly } from "../middleware/auth.middleware.js";
 const router = express.Router();
 
 router.get("/", getAllProperties);
-router.post("/", protectRoute,adminOnly, createProperty);
+router.post("/create", protectRoute,adminOnly, createProperty);
 router.put("/:id", protectRoute, updateProperty);
 router.delete("/:id", protectRoute, deleteProperty);
 

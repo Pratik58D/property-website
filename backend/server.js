@@ -19,24 +19,16 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 })
 
-
-
 const Port = process.env.PORT || 6070;
-console.log(process.env.CLOUDINARY_CLOUD_NAME);
-
+//middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 
-
-
-
-
-
+//Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/user", userRoutes);
-app.use("api/property", propertyRoutes);
-
+app.use("/api/property", propertyRoutes);
 
 app.listen(Port, () => {
   console.log(`Server is running on ${Port}`);
